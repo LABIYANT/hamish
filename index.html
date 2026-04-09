@@ -13,7 +13,7 @@
         body {
             margin: 0;
             padding: 0;
-            font-family: 'Special Elite', monospace; /* Daktilo fontu aktif */
+            font-family: 'Special Elite', monospace;
             background-color: #0a0a0a;
             display: flex;
             justify-content: center;
@@ -43,7 +43,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background-color: rgba(0, 0, 0, 0.6); /* Neon daha iyi parlasın diye biraz daha koyulaştırdık */
+            background-color: rgba(0, 0, 0, 0.6); 
             z-index: -1;
             opacity: 0;
             transition: opacity 2s ease;
@@ -65,6 +65,7 @@
             cursor: pointer;
             z-index: 9999;
             transition: opacity 1.5s ease, visibility 1.5s ease;
+            text-align: center;
         }
 
         /* İlk baştaki yazının yavaşça yanıp sönme ve neon efekti */
@@ -83,7 +84,7 @@
             50% { opacity: 1; }
         }
 
-        /* JavaScript ile eklenecek gizleme/gösterme sınıfları */
+        /* JavaScript ile eklenecek sınıflar */
         .gizle {
             opacity: 0;
             visibility: hidden;
@@ -111,7 +112,6 @@
             letter-spacing: 5px;
             margin-bottom: 30px;
             color: #fff;
-            /* Güçlü Beyaz Neon Parlaması */
             text-shadow: 
                 0 0 5px #fff,
                 0 0 10px #fff,
@@ -130,7 +130,6 @@
             max-width: 80%; 
         }
 
-        /* Minik sade sosyal medya ikonları */
         .sosyal-item {
             text-decoration: none;
             color: white;
@@ -138,25 +137,46 @@
             transition: all 0.3s ease;
         }
 
-        /* İkonların üzerine gelinceki beyaz neon animasyonu */
         .sosyal-item:hover {
             opacity: 1;
             transform: translateY(-5px) scale(1.1);
         }
 
         .sosyal-item:hover .sade-ikon {
-            /* Üzerine gelince ikonlar da beyaz neon ile parlar */
             filter: drop-shadow(0 0 8px #fff) drop-shadow(0 0 20px #fff);
         }
 
-        /* İkonların boyut ayarları */
         .sade-ikon {
             width: 30px;
             height: 30px;
             fill: currentColor;
-            /* İkonların normal halindeki hafif parlama */
             filter: drop-shadow(0 0 3px rgba(255,255,255,0.5));
             transition: filter 0.3s ease;
+        }
+
+        /* =========================================
+           MOBİL UYUMLULUK (TELEFONLAR İÇİN) AYARLAR
+           ========================================= */
+        @media (max-width: 768px) {
+            .lexsad-baslik {
+                font-size: 2.8rem; /* Telefonda ana yazıyı küçült */
+                letter-spacing: 3px;
+                margin-bottom: 20px;
+            }
+            
+            #karanlik-ekran {
+                font-size: 1.2rem; /* Tıklama yazısını küçült */
+            }
+
+            #sosyal-linkler {
+                gap: 15px; /* İkonların arasını daralt ki alt satıra çok taşmasın */
+                max-width: 95%; /* Telefonda daha geniş alana yayılsın */
+            }
+
+            .sade-ikon {
+                width: 25px; /* İkonları hafifçe küçült */
+                height: 25px;
+            }
         }
     </style>
 </head>
@@ -166,7 +186,7 @@
         <span class="titresim">Neden tıklamıyorsun?</span>
     </div>
 
-    <video id="arka-plan-videosu" loop>
+    <video id="arka-plan-videosu" loop playsinline webkit-playsinline>
         <source src="video.mp4" type="video/mp4">
     </video>
 
